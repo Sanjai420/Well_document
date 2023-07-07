@@ -12,8 +12,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/nice-select2.css" />  
-
-    <link rel="stylesheet" href="assets/css/flatpickr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="assets/css/flatpickr.min.css" /> -->
 </head>
 <body>
     <div class="p-5 flex justify-center">
@@ -33,30 +33,22 @@
                             <input id="middleName" type="text" placeholder="Enter Middle Name" class="form-input" />
                         </div>
                         <div class="w-full">
-                            <label for="actionName">Surname</label>
+                            <label for="actionName">Surname <span class="text-red-600">*</span></label>
                             <input id="sureName" type="text" placeholder="Enter Surname" class="form-input" required/>
                         </div>
                     </div>
-                    <div class=""
-                    
-                        x-data="{
-                            date1: '05-07-2002',
-                            init() {
-                              this.initializeDatePicker();
-                            },
-                            initializeDatePicker() {
-                              flatpickr(document.getElementById('date_of_birth'), {
-                                dateFormat: 'd-m-Y',
-                                defaultDate: this.date1,
-                              });
-                            }
-                          }" x-init="init">
-                        <label for="date">Date Of Birth
-                            </label>
-                        <input id="date_of_birth"
-                            x-model="date1"
-                            class="form-input" required/>
+                    <div>
+                        <label for="dateOfBirth">Date Of Birth <span class="text-red-600">*</span></label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                              </svg>
+                            </div>
+                            <input datepicker type="text" class="form-input pl-10 p-2 " placeholder="Select date">
+                          </div>
                     </div>
+                    
 
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
@@ -78,7 +70,7 @@
                     </div>
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
-                            <label for="phoneMask">Phone Number</label>
+                            <label for="phoneMask">Phone Number <span class="text-red-600">*</span></label>
                             <input id="phoneMask" type="tel" placeholder="123-45-678" class="form-input" x-mask="(999) 999-9999" required/>
                         </div>
                         <div>
@@ -104,7 +96,7 @@
                     <div class="row files" id="files1">
                         <label>Will</label>
                         <span class="btn btn-outline-primary btn-file sm:w-[50%] md:w-[20%]">
-                            Browse  <input type="file" name="files1" class=" absolute top-0 right-0  outline-none cursor-pointer opacity-0 block w-full h-full" style="font-size: 0.50rem;" multiple/>
+                            Upload File  <input type="file" name="files1" class=" absolute top-0 right-0  outline-none cursor-pointer opacity-0 block w-full h-full" style="font-size: 0.50rem;" multiple/>
                         </span>
                         <br />
                         <ul class="fileList" style="margin-top: -2%;"></ul>
@@ -151,12 +143,13 @@
     <!-- Alpine Core -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="assets/js/alpine.min.js" defer></script>
-    <script src="assets/js/flatpickr.js"></script>
+    <!-- <script src="assets/js/flatpickr.js"></script> -->
     <script src="assets/js/nice-select2.js"></script>
     <script src="assets/js/alpine-mask.min.js"></script>
     <script src="assets/js/file-upload-with-preview.iife.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="../path/to/flowbite/dist/datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/datepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 <script src="https://unpkg.com/create-file-list"></script>
     <script>
@@ -1050,12 +1043,12 @@
                         file: file
                     });
 
-                    var removeLink = "<a class=\"removeFile\" href=\"#\" data-fileid=\"" + fileId + "\">Remove</a>";
+                    var removeLink = "<a class=\"removeFile\" href=\"#\" data-fileid=\"" + fileId + "\"><i class='fa-solid fa-xmark'></i></a>";
 
-                    output.push("<li><strong>", escape(file.name), "</strong> - ", file.size, " bytes. &nbsp; &nbsp; ", removeLink, "</li> ");
+                    output.push("<li class='mb-5'><strong>", escape(file.name), "</strong> - ", file.size, " bytes. &nbsp; &nbsp; ", removeLink, "</li> ");
                 };
 
-                $(this).children(".fileList").append(output.join(""));
+                $(this).children(".fileList").append(decodeURIComponent(output.join("")));
 
                 // Reset the input to null - fix for Chrome bug
                 $(this).find("input[type=file]").val(null);
@@ -1119,6 +1112,11 @@
                 });
             });
         });
+        $(function(){
+    $("#date_of_birth").datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+});
     </script>
 </body>
 </html>
