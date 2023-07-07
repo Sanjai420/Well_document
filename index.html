@@ -26,7 +26,7 @@
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div class="w-full">
                             <label for="actionName">Given Name <span class="text-red-600">*</span></label>
-                            <input id="actionName" type="text" placeholder="Enter Name" class="form-input" />
+                            <input id="actionName" type="text" placeholder="Enter Name" class="form-input" required/>
                         </div>
                         <div class="w-full">
                             <label for="actionName">Middle Name</label>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="w-full">
                             <label for="actionName">Surname</label>
-                            <input id="sureName" type="text" placeholder="Enter Surname" class="form-input" />
+                            <input id="sureName" type="text" placeholder="Enter Surname" class="form-input" required/>
                         </div>
                     </div>
                     <div class=""
@@ -55,7 +55,7 @@
                             </label>
                         <input id="date_of_birth"
                             x-model="date1"
-                            class="form-input" />
+                            class="form-input" required/>
                     </div>
 
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -79,11 +79,11 @@
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
                             <label for="phoneMask">Phone Number</label>
-                            <input id="phoneMask" type="tel" placeholder="123-45-678" class="form-input" x-mask="(999) 999-9999" />
+                            <input id="phoneMask" type="tel" placeholder="123-45-678" class="form-input" x-mask="(999) 999-9999" required/>
                         </div>
                         <div>
                             <label for="gridEmail">Email <span class="text-red-600">*</span> </label>
-                            <input id="gridEmail" type="email" placeholder="Enter Email" class="form-input" />
+                            <input id="gridEmail" type="email" placeholder="Enter Email" class="form-input" required/>
                         </div>
                         
                     </div>
@@ -99,12 +99,12 @@
                     </div>
                     <div>
                         <label for="lifeInsurence">Life Insurance</label>
-                        <input type="text" placeholder="" class="form-input" id="lifeInsurence" required />
+                        <input type="text" placeholder="" class="form-input" id="lifeInsurence"/>
                     </div>
                     <div class="row files" id="files1">
                         <label>Will</label>
                         <span class="btn btn-outline-primary btn-file sm:w-[50%] md:w-[20%]">
-                            Browse  <input type="file" name="files1" class=" absolute top-0 right-0  outline-none cursor-pointer opacity-0 block w-full h-full" style="font-size: 0.50rem;" multiple />
+                            Browse  <input type="file" name="files1" class=" absolute top-0 right-0  outline-none cursor-pointer opacity-0 block w-full h-full" style="font-size: 0.50rem;" multiple/>
                         </span>
                         <br />
                         <ul class="fileList" style="margin-top: -2%;"></ul>
