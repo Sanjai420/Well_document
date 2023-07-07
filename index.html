@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/nice-select2.css" />
-    
+    <link rel="stylesheet" type="text/css" href="assets/css/nice-select2.css" />  
 
     <link rel="stylesheet" href="assets/css/flatpickr.min.css" />
 </head>
@@ -20,7 +19,7 @@
     <div class="p-5 flex justify-center">
         <div class="panel sm:w-full lg:w-[50%]">
             <div class="mb-5 flex items-center justify-between">
-                <h5 class="text-lg font-semibold dark:text-white-light">Form</h5>
+                <h3 class="text-xl font-semibold dark:text-white-light">Will Document</h3>
             </div>
             <div class="mb-5">
                 <form class="space-y-3">
@@ -41,13 +40,13 @@
                     <div class=""
                     
                         x-data="{
-                            date1: '2002-07-05',
+                            date1: '05-07-2002',
                             init() {
                               this.initializeDatePicker();
                             },
                             initializeDatePicker() {
                               flatpickr(document.getElementById('date_of_birth'), {
-                                dateFormat: 'Y-m-d',
+                                dateFormat: 'd-m-Y',
                                 defaultDate: this.date1,
                               });
                             }
@@ -61,35 +60,26 @@
 
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
-                            <label for="country">Country</label>
-                            <select id="seachable-select" class="w-full rounded-lg bg-white border border-slate-200 focus:ring-blue-500 outline-none">
-                                <option value="US">United States</option>
-                                <option value="UK">United Kingdom</option>
-                                <option value="CA">Canada</option>
-                                <option value="In">India</option>
-                                <option value="EG">Egypt</option>
-                                <option value="FR">France</option>
-                                <option value="IR">Iran</option>
-                                <option value="NZ">New Zealand</option>
-                            </select>
-                        </div>
-                          <div>
-                            <label for="gridCity">City</label>
+                            <label for="gridCity">City of Birth</label>
                             <input id="gridCity" type="text" placeholder="Enter City" class="form-input" />
+                        </div>
+                        <div>
+                            <label for="country">Country of Birth</label>
+                            <select id="seachable-select" class="w-full rounded-lg bg-white border border-slate-200 focus:ring-blue-500 outline-none"></select>
                         </div>
                     </div>
                     <div>
                         <label for="ipMask" class="">Passport Number</label>
-                        <input id="ipMask" type="text" placeholder="____-____-____" class="form-input" x-mask="9999-9999-9999" />
+                        <input id="ipMask" type="text" placeholder="" class="form-input" x-mask="9999-9999-9999" />
                     </div>
                     <div>
                         <label for="gridAddress1">Address</label>
-                        <input id="gridAddress1" type="text" placeholder="Enter Address" value="1234 Main St" class="form-input" />
+                        <input id="gridAddress1" type="text" placeholder="Enter Address" class="form-input" />
                     </div>
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
                             <label for="phoneMask">Phone Number</label>
-                            <input id="phoneMask" type="text" placeholder="(___) ___-____" class="form-input" x-mask="(999) 999-9999" />
+                            <input id="phoneMask" type="tel" placeholder="123-45-678" class="form-input" x-mask="(999) 999-9999" />
                         </div>
                         <div>
                             <label for="gridEmail">Email <span class="text-red-600">*</span> </label>
@@ -111,14 +101,22 @@
                         <label for="lifeInsurence">Life Insurance</label>
                         <input type="text" placeholder="" class="form-input" id="lifeInsurence" required />
                     </div>
-                    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
+                    <div class="row files" id="files1">
+                        <label>Will</label>
+                        <span class="btn btn-outline-primary btn-file sm:w-[50%] md:w-[20%]">
+                            Browse  <input type="file" name="files1" class=" absolute top-0 right-0  outline-none cursor-pointer opacity-0 block w-full h-full" style="font-size: 0.50rem;" multiple />
+                        </span>
+                        <br />
+                        <ul class="fileList" style="margin-top: -2%;"></ul>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3" style="margin-top: -0.3%;">
                         <div class="w-full">
                             <label for="executorName">Executor Name</label>
                             <input id="executorName" type="text" placeholder="Enter Your Name" class="form-input" />
                         </div>
                         <div>
                             <label for="executorphoneMask">Executor Phone Number</label>
-                            <input id="executorphoneMask" type="text" placeholder="(___) ___-____" class="form-input" x-mask="(999) 999-9999" />
+                            <input id="executorphoneMask" type="text" placeholder=" " class="form-input" x-mask="(999) 999-9999" />
                         </div>
                         <div>
                             <label for="executorEmail">Executor Email</label>
@@ -130,96 +128,14 @@
                         <input
                             id="gridAddress2"
                             type="text"
-                            placeholder="Enter Address2"
-                            value="Apartment, studio, or floor"
+                            placeholder="Enter Address"
                             class="form-input"
                         />
                     </div>
                     <div>
                         <label for="lifeInsurence">Next of Kin</label>
                         <input type="text" placeholder="" class="form-input" id="nextOfKin" required />
-                    </div>
-                    <div>
-                        <label for="file_upload">Will</label>
-                        <div x-data="dataFileDnD()" class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
-                            <div x-ref="dnd"
-                                class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer"
-                                @dragover.prevent="$event.preventDefault(); $refs.dnd.classList.add('border-blue-400')"
-                                @dragleave="$refs.dnd.classList.remove('border-blue-400')"
-                                @drop.prevent="addFiles($event); $refs.dnd.classList.remove('border-blue-400')">
-                                <input accept="*" type="file" multiple
-                                    class="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
-                                    @change="addFiles($event)" />
-                
-                                <div class="flex flex-col items-center justify-center py-10 text-center">
-                                    <svg class="w-6 h-6 mr-1 text-current-50" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    <p class="m-0">Drag your files here or click in this area.</p>
-                                </div>
-                            </div>
-                
-                            <template x-if="files.length > 0">
-                                <div class="grid grid-cols-2 gap-4 mt-4 md:grid-cols-6">
-                                    <template x-for="(file, index) in files" :key="index">
-                                        <div class="relative flex flex-col items-center overflow-hidden text-center bg-gray-100 border rounded cursor-move select-none"
-                                            style="padding-top: 100%;" draggable="true" @dragstart="dragstart($event, index)"
-                                            @dragend="fileDragging = null" :class="{'border-blue-600': fileDragging === index}">
-                                            <button class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
-                                                type="button" @click="remove(index)">
-                                                <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                </svg>
-                                            </button>
-                                            <template x-if="files[index].type.includes('audio/')">
-                                                <svg class="absolute w-12 h-12 text-gray-400 transform top-1/2 -translate-y-2/3"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                                                </svg>
-                                            </template>
-                                            <template x-if="files[index].type.includes('application/') || files[index].type === ''">
-                                                <svg class="absolute w-12 h-12 text-gray-400 transform top-1/2 -translate-y-2/3"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                                </svg>
-                                            </template>
-                                            <template x-if="files[index].type.includes('image/')">
-                                                <img class="absolute inset-0 z-0 object-cover w-full h-full border-4 border-white preview"
-                                                    x-bind:src="loadFile(files[index])" />
-                                            </template>
-                                            <template x-if="files[index].type.includes('video/')">
-                                                <video
-                                                    class="absolute inset-0 object-cover w-full h-full border-4 border-white pointer-events-none preview">
-                                                    <source x-bind:src="loadFile(files[index])" type="video/mp4" />
-                                                </video>
-                                            </template>
-                
-                                            <div
-                                                class="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-white bg-opacity-50">
-                                                <span class="w-full font-bold text-gray-900 truncate"
-                                                    x-text="files[index].name">Loading</span>
-                                                <span class="text-xs text-gray-900" x-text="humanFileSize(files[index].size)">...</span>
-                                            </div>
-                
-                                            <div class="absolute inset-0 z-40 transition-colorsduration-300"
-                                                @dragenter="dragenter($event)" @dragleave="fileDropping = null"
-                                                :class="{'bg-blue-200 bg-opacity-80': fileDropping == index && fileDragging != index}">
-                                            </div>
-                                        </div>
-                                    </template>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-                    
+                    </div>               
                     
                     <div class="float-right">
                         <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
@@ -239,63 +155,970 @@
     <script src="assets/js/nice-select2.js"></script>
     <script src="assets/js/alpine-mask.min.js"></script>
     <script src="assets/js/file-upload-with-preview.iife.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 <script src="https://unpkg.com/create-file-list"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(e) {
-        // seachable 
-        var options = {
-            searchable: true
-        };
-        NiceSelect.bind(document.getElementById("seachable-select"), options);
-    });
+  var options = [
+      { value: "US", label: "United States" },
+    { value: "UK", label: "United Kingdom" },
+    { value: "CA", label: "Canada" },
+    { value: "In", label: "India" },
+    { value: "EG", label: "Egypt" },
+    { value: "FR", label: "France" },
+    { value: "IR", label: "Iran" },
+    { value: "NZ", label: "New Zealand" },
+  
+  {
+    label: 'Afghanistan',
+    value: 'AF',
+  },
+  {
+    label: 'Albania',
+    value: 'AL',
+  },
+  {
+    label: 'Algeria',
+    value: 'DZ',
+  },
+  {
+    label: 'American Samoa',
+    value: 'AS',
+  },
+  {
+    label: 'Andorra',
+    value: 'AD',
+  },
+  {
+    label: 'Angola',
+    value: 'AO',
+  },
+  {
+    label: 'Anguilla',
+    value: 'AI',
+  },
+  {
+    label: 'Argentina',
+    value: 'AR',
+  },
+  {
+    label: 'Armenia',
+    value: 'AM',
+  },
+  {
+    label: 'Aruba',
+    value: 'AW',
+  },
+  {
+    label: 'Australia',
+    value: 'AU',
+  },
+  {
+    label: 'Azerbaijan',
+    value: 'AZ',
+  },
+  {
+    label: 'Bahamas',
+    value: 'BS',
+  },
+  {
+    label: 'Bahrain',
+    value: 'BH',
+  },
+  {
+    label: 'Bangladesh',
+    value: 'BD',
+  },
+  {
+    label: 'Barbados',
+    value: 'BB',
+  },
+  {
+    label: 'Belarus',
+    value: 'BY',
+  },
+  {
+    label: 'Belgium',
+    value: 'BE',
+  },
+  {
+    label: 'Belize',
+    value: 'BZ',
+  },
+  {
+    label: 'Benin',
+    value: 'BJ',
+  },
+  {
+    label: 'Bermuda',
+    value: 'BM',
+  },
+  {
+    label: 'Bhutan',
+    value: 'BT',
+  },
+  {
+    label: 'Bolivia',
+    value: 'BO',
+  },
+  {
+    label: 'Bosnia and Herzegovina',
+    value: 'BA',
+  },
+  {
+    label: 'Botswana',
+    value: 'BW',
+  },
+  {
+    label: 'Brazil',
+    value: 'BR',
+  },
+  {
+    label: 'British Virgin Islands',
+    value: 'VG',
+  },
+  {
+    label: 'Brunei',
+    value: 'BN',
+  },
+  {
+    label: 'Bulgaria',
+    value: 'BG',
+  },
+  {
+    label: 'Burkina Faso',
+    value: 'BF',
+  },
+  {
+    label: 'Burundi',
+    value: 'BI',
+  },
+  {
+    label: 'Cambodia',
+    value: 'KH',
+  },
+  {
+    label: 'Cameroon',
+    value: 'CM',
+  },
+  {
+    label: 'Cape Verde',
+    value: 'CV',
+  },
+  {
+    label: 'Cayman Islands',
+    value: 'KY',
+  },
+  {
+    label: 'Central African Republic',
+    value: 'CF',
+  },
+  {
+    label: 'Chad',
+    value: 'TD',
+  },
+  {
+    label: 'Chile',
+    value: 'CL',
+  },
+  {
+    label: 'China',
+    value: 'CN',
+  },
+  {
+    label: 'Columbia',
+    value: 'CO',
+  },
+  {
+    label: 'Comoros',
+    value: 'KM',
+  },
+  {
+    label: 'Cook Islands',
+    value: 'CK',
+  },
+  {
+    label: 'Costa Rica',
+    value: 'CR',
+  },
+  {
+    label: 'Croatia',
+    value: 'HR',
+  },
+  {
+    label: 'Cuba',
+    value: 'CU',
+  },
+  {
+    label: 'Curacao',
+    value: 'CW',
+  },
+  {
+    label: 'Cyprus',
+    value: 'CY',
+  },
+  {
+    label: 'Czech Republic',
+    value: 'CZ',
+  },
+  {
+    label: 'Democratic Republic of the Congo',
+    value: 'CD',
+  },
+  {
+    label: 'Denmark',
+    value: 'DK',
+  },
+  {
+    label: 'Djibouti',
+    value: 'DJ',
+  },
+  {
+    label: 'Dominica',
+    value: 'DM',
+  },
+  {
+    label: 'Dominican Republic',
+    value: 'DO',
+  },
+  {
+    label: 'East Timor',
+    value: 'TL',
+  },
+  {
+    label: 'Ecuador',
+    value: 'EC',
+  },
+  {
+    label: 'El Salvador',
+    value: 'SV',
+  },
+  {
+    label: 'Eritrea',
+    value: 'ER',
+  },
+  {
+    label: 'Estonia',
+    value: 'EE',
+  },
+  {
+    label: 'Faroe Islands',
+    value: 'FO',
+  },
+  {
+    label: 'Fiji',
+    value: 'FJ',
+  },
+  {
+    label: 'Finland',
+    value: 'FI',
+  },
+  {
+    label: 'French Polynesia',
+    value: 'PF',
+  },
+  {
+    label: 'Gabon',
+    value: 'GA',
+  },
+  {
+    label: 'Gambia',
+    value: 'GM',
+  },
+  {
+    label: 'Georgia',
+    value: 'GE',
+  },
+  {
+    label: 'Germany',
+    value: 'DE',
+  },
+  {
+    label: 'Ghana',
+    value: 'GH',
+  },
+  {
+    label: 'Greece',
+    value: 'GR',
+  },
+  {
+    label: 'Greenland',
+    value: 'GL',
+  },
+  {
+    label: 'Grenada',
+    value: 'GD',
+  },
+  {
+    label: 'Guam',
+    value: 'GU',
+  },
+  {
+    label: 'Guatemala',
+    value: 'GT',
+  },
+  {
+    label: 'Guernsey',
+    value: 'GG',
+  },
+  {
+    label: 'Guinea',
+    value: 'GN',
+  },
+  {
+    label: 'Guinea-Bissau',
+    value: 'GW',
+  },
+  {
+    label: 'Guyana',
+    value: 'GY',
+  },
+  {
+    label: 'Haiti',
+    value: 'HT',
+  },
+  {
+    label: 'Honduras',
+    value: 'HN',
+  },
+  {
+    label: 'Hong Kong',
+    value: 'HK',
+  },
+  {
+    label: 'Hungary',
+    value: 'HU',
+  },
+  {
+    label: 'Iceland',
+    value: 'IS',
+  },
+  {
+    label: 'Indonesia',
+    value: 'ID',
+  },
+  {
+    label: 'Iraq',
+    value: 'IQ',
+  },
+  {
+    label: 'Ireland',
+    value: 'IE',
+  },
+  {
+    label: 'Isle of Man',
+    value: 'IM',
+  },
+  {
+    label: 'Israel',
+    value: 'IL',
+  },
+  {
+    label: 'Italy',
+    value: 'IT',
+  },
+  {
+    label: 'Ivory Coast',
+    value: 'CI',
+  },
+  {
+    label: 'Jamaica',
+    value: 'JM',
+  },
+  {
+    label: 'Japan',
+    value: 'JP',
+  },
+  {
+    label: 'Jersey',
+    value: 'JE',
+  },
+  {
+    label: 'Jordan',
+    value: 'JO',
+  },
+  {
+    label: 'Kazakhstan',
+    value: 'KZ',
+  },
+  {
+    label: 'Kenya',
+    value: 'KE',
+  },
+  {
+    label: 'Kiribati',
+    value: 'KI',
+  },
+  {
+    label: 'Kosovo',
+    value: 'XK',
+  },
+  {
+    label: 'Kuwait',
+    value: 'KW',
+  },
+  {
+    label: 'Kyrgyzstan',
+    value: 'KG',
+  },
+  {
+    label: 'Laos',
+    value: 'LA',
+  },
+  {
+    label: 'Latvia',
+    value: 'LV',
+  },
+  {
+    label: 'Lebanon',
+    value: 'LB',
+  },
+  {
+    label: 'Lesotho',
+    value: 'LS',
+  },
+  {
+    label: 'Liberia',
+    value: 'LB',
+  },
+  {
+    label: 'Libya',
+    value: 'LY',
+  },
+  {
+    label: 'Liechtenstein',
+    value: 'LI',
+  },
+  {
+    label: 'Lithuania',
+    value: 'LT',
+  },
+  {
+    label: 'Luxembourg',
+    value: 'LU',
+  },
+  {
+    label: 'Macau',
+    value: 'MO',
+  },
+  {
+    label: 'Macedonia',
+    value: 'MK',
+  },
+  {
+    label: 'Madagascar',
+    value: 'MG',
+  },
+  {
+    label: 'Malawi',
+    value: 'MW',
+  },
+  {
+    label: 'Malaysia',
+    value: 'MY',
+  },
+  {
+    label: 'Maldives',
+    value: 'MV',
+  },
+  {
+    label: 'Mali',
+    value: 'ML',
+  },
+  {
+    label: 'Malta',
+    value: 'MT',
+  },
+  {
+    label: 'Marshall Islands',
+    value: 'MH',
+  },
+  {
+    label: 'Mauritania',
+    value: 'MR',
+  },
+  {
+    label: 'Mauritius',
+    value: 'MU',
+  },
+  {
+    label: 'Mayotte',
+    value: 'YT',
+  },
+  {
+    label: 'Mexico',
+    value: 'MX',
+  },
+  {
+    label: 'Micronesia',
+    value: 'FM',
+  },
+  {
+    label: 'Moldova',
+    value: 'MD',
+  },
+  {
+    label: 'Monaco',
+    value: 'MC',
+  },
+  {
+    label: 'Mongolia',
+    value: 'MN',
+  },
+  {
+    label: 'Montenegro',
+    value: 'ME',
+  },
+  {
+    label: 'Morocco',
+    value: 'MA',
+  },
+  {
+    label: 'Mozambique',
+    value: 'MZ',
+  },
+  {
+    label: 'Myanmar',
+    value: 'MM',
+  },
+  {
+    label: 'Namibia',
+    value: 'NA',
+  },
+  {
+    label: 'Nepal',
+    value: 'NP',
+  },
+  {
+    label: 'Netherlands',
+    value: 'NL',
+  },
+  {
+    label: 'Netherlands Antilles',
+    value: 'AN',
+  },
+  {
+    label: 'New Caledonia',
+    value: 'NC',
+  },
+  {
+    label: 'Nicaragua',
+    value: 'NI',
+  },
+  {
+    label: 'Niger',
+    value: 'NE',
+  },
+  {
+    label: 'Nigeria',
+    value: 'NG',
+  },
+  {
+    label: 'North Korea',
+    value: 'KP',
+  },
+  {
+    label: 'Northern Mariana Islands',
+    value: 'MP',
+  },
+  {
+    label: 'Norway',
+    value: 'NO',
+  },
+  {
+    label: 'Oman',
+    value: 'OM',
+  },
+  {
+    label: 'Pakistan',
+    value: 'PK',
+  },
+  {
+    label: 'Palestine',
+    value: 'PS',
+  },
+  {
+    label: 'Panama',
+    value: 'PA',
+  },
+  {
+    label: 'Papua New Guinea',
+    value: 'PG',
+  },
+  {
+    label: 'Paraguay',
+    value: 'PY',
+  },
+  {
+    label: 'Peru',
+    value: 'PE',
+  },
+  {
+    label: 'Philippines',
+    value: 'PH',
+  },
+  {
+    label: 'Poland',
+    value: 'PL',
+  },
+  {
+    label: 'Portugal',
+    value: 'PT',
+  },
+  {
+    label: 'Puerto Rico',
+    value: 'PR',
+  },
+  {
+    label: 'Qatar',
+    value: 'QA',
+  },
+  {
+    label: 'Republic of the Congo',
+    value: 'CG',
+  },
+  {
+    label: 'Reunion',
+    value: 'RE',
+  },
+  {
+    label: 'Romania',
+    value: 'RO',
+  },
+  {
+    label: 'Russia',
+    value: 'RU',
+  },
+  {
+    label: 'Rwanda',
+    value: 'RW',
+  },
+  {
+    label: 'Saint Kitts and Nevis',
+    value: 'KN',
+  },
+  {
+    label: 'Saint Lucia',
+    value: 'LC',
+  },
+  {
+    label: 'Saint Martin',
+    value: 'MF',
+  },
+  {
+    label: 'Saint Pierre and Miquelon',
+    value: 'PM',
+  },
+  {
+    label: 'Saint Vincent and the Grenadines',
+    value: 'VC',
+  },
+  {
+    label: 'Samoa',
+    value: 'WS',
+  },
+  {
+    label: 'San Marino',
+    value: 'SM',
+  },
+  {
+    label: 'Sao Tome and Principe',
+    value: 'ST',
+  },
+  {
+    label: 'Saudi Arabia',
+    value: 'SA',
+  },
+  {
+    label: 'Senegal',
+    value: 'SN',
+  },
+  {
+    label: 'Serbia',
+    value: 'RS',
+  },
+  {
+    label: 'Seychelles',
+    value: 'SC',
+  },
+  {
+    label: 'Sierra Leone',
+    value: 'SL',
+  },
+  {
+    label: 'Singapore',
+    value: 'SG',
+  },
+  {
+    label: 'Sint Maarten',
+    value: 'SX',
+  },
+  {
+    label: 'Slovakia',
+    value: 'SK',
+  },
+  {
+    label: 'Slovenia',
+    value: 'SI',
+  },
+  {
+    label: 'Solomon Islands',
+    value: 'SB',
+  },
+  {
+    label: 'Somalia',
+    value: 'SO',
+  },
+  {
+    label: 'South Africa',
+    value: 'ZA',
+  },
+  {
+    label: 'South Korea',
+    value: 'KR',
+  },
+  {
+    label: 'South Sudan',
+    value: 'SS',
+  },
+  {
+    label: 'Spain',
+    value: 'ES',
+  },
+  {
+    label: 'Sri Lanka',
+    value: 'LK',
+  },
+  {
+    label: 'Sudan',
+    value: 'SD',
+  },
+  {
+    label: 'Suriname',
+    value: 'SR',
+  },
+  {
+    label: 'Swaziland',
+    value: 'SZ',
+  },
+  {
+    label: 'Sweden',
+    value: 'SE',
+  },
+  {
+    label: 'Switzerland',
+    value: 'CH',
+  },
+  {
+    label: 'Syria',
+    value: 'SY',
+  },
+  {
+    label: 'Taiwan',
+    value: 'TW',
+  },
+  {
+    label: 'Tajikistan',
+    value: 'TJ',
+  },
+  {
+    label: 'Tanzania',
+    value: 'TZ',
+  },
+  {
+    label: 'Thailand',
+    value: 'TH',
+  },
+  {
+    label: 'Togo',
+    value: 'TG',
+  },
+  {
+    label: 'Tonga',
+    value: 'TO',
+  },
+  {
+    label: 'Trinidad and Tobago',
+    value: 'TT',
+  },
+  {
+    label: 'Tunisia',
+    value: 'TN',
+  },
+  {
+    label: 'Turkey',
+    value: 'TR',
+  },
+  {
+    label: 'Turkmenistan',
+    value: 'TM',
+  },
+  {
+    label: 'Turks and Caicos Islands',
+    value: 'TC',
+  },
+  {
+    label: 'Tuvalu',
+    value: 'TV',
+  },
+  {
+    label: 'U.S. Virgin Islands',
+    value: 'VI',
+  },
+  {
+    label: 'Uganda',
+    value: 'UG',
+  },
+  {
+    label: 'Ukraine',
+    value: 'UA',
+  },
+  {
+    label: 'United Arab Emirates',
+    value: 'AE',
+  },
+  {
+    label: 'United Kingdom',
+    value: 'GB',
+  },
+  {
+    label: 'Uruguay',
+    value: 'UY',
+  },
+  {
+    label: 'Uzbekistan',
+    value: 'UZ',
+  },
+  {
+    label: 'Vanuatu',
+    value: 'VU',
+  },
+  {
+    label: 'Venezuela',
+    value: 'VE',
+  },
+  {
+    label: 'Vietnam',
+    value: 'VN',
+  },
+  {
+    label: 'Western Sahara',
+    value: 'EH',
+  },
+  {
+    label: 'Yemen',
+    value: 'YE',
+  },
+  {
+    label: 'Zambia',
+    value: 'ZM',
+  },
+  {
+    label: 'Zimbabwe',
+    value: 'ZW',
+  },
+  ];
+
+  var selectElement = document.getElementById("seachable-select");
+
+  options.forEach(function(option) {
+    var optionElement = document.createElement("option");
+    optionElement.value = option.value;
+    optionElement.textContent = option.label;
+    selectElement.appendChild(optionElement);
+  });
+
+  var niceSelect = NiceSelect.bind(selectElement, { searchable: true });
+});
       </script>
-      <script>function dataFileDnD() {
-        return {
-            files: [],
-            fileDragging: null,
-            addFiles(event) {
-                const newFiles = Array.from(event.target.files || event.dataTransfer.files);
-                this.files = this.files.concat(newFiles);
-            },
-            remove(index) {
-                this.files.splice(index, 1);
-            },
-            dragstart(event, index) {
-                event.dataTransfer.effectAllowed = 'move';
-                this.fileDragging = index;
-            },
-            loadFile(file) {
-                const preview = document.querySelectorAll('.preview');
-                const blobUrl = URL.createObjectURL(file);
+      <script>
+        $.fn.fileUploader = function (filesToUpload, sectionIdentifier) {
+            var fileIdCounter = 0;
 
-                preview.forEach(elem => {
-                    elem.onload = () => {
-                        URL.revokeObjectURL(elem.src); // free memory
-                    };
-                });
+            $(this).closest(".files").change(function (evt) {
+                var output = [];
 
-                return blobUrl;
-            },
-            humanFileSize(size) {
-                const i = Math.floor(Math.log(size) / Math.log(1024));
-                return (
-                    (size / Math.pow(1024, i)).toFixed(2) * 1 +
-                    ' ' +
-                    ['B', 'kB', 'MB', 'GB', 'TB'][i]
-                );
-            },
-            dragenter(e) {
-                let targetElem = e.target.closest('[draggable]');
+                for (var i = 0; i < evt.target.files.length; i++) {
+                    fileIdCounter++;
+                    var file = evt.target.files[i];
+                    var fileId = sectionIdentifier + fileIdCounter;
 
-                this.fileDropping = targetElem.getAttribute('data-index');
-            },
-            dragend() {
-                this.fileDragging = null;
+                    filesToUpload.push({
+                        id: fileId,
+                        file: file
+                    });
+
+                    var removeLink = "<a class=\"removeFile\" href=\"#\" data-fileid=\"" + fileId + "\">Remove</a>";
+
+                    output.push("<li><strong>", escape(file.name), "</strong> - ", file.size, " bytes. &nbsp; &nbsp; ", removeLink, "</li> ");
+                };
+
+                $(this).children(".fileList").append(output.join(""));
+
+                // Reset the input to null - fix for Chrome bug
+                $(this).find("input[type=file]").val(null);
+            });
+
+            $(this).on("click", ".removeFile", function (e) {
+                e.preventDefault();
+
+                var fileId = $(this).data("fileid");
+
+                // Loop through the files array and check if the ID of the file matches fileId
+                // and get the index of the match
+                for (var i = 0; i < filesToUpload.length; ++i) {
+                    if (filesToUpload[i].id === fileId)
+                        filesToUpload.splice(i, 1);
+                }
+
+                $(this).parent().remove();
+            });
+
+            this.clear = function () {
+                for (var i = 0; i < filesToUpload.length; ++i) {
+                    if (filesToUpload[i].id.indexOf(sectionIdentifier) >= 0)
+                        filesToUpload.splice(i, 1);
+                }
+
+                $(this).children(".fileList").empty();
             }
+
+            return this;
         };
-    }
-</script>
+
+        $(function () {
+            var filesToUpload = [];
+
+            var files1Uploader = $("#files1").fileUploader(filesToUpload, "files1");
+
+            $("#uploadBtn").click(function (e) {
+                e.preventDefault();
+
+                var formData = new FormData();
+
+                for (var i = 0, len = filesToUpload.length; i < len; i++) {
+                    formData.append("files", filesToUpload[i].file);
+                }
+
+                $.ajax({
+                    url: "http://requestb.in/1k0dxvs1",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: "POST",
+                    success: function (data) {
+                        alert("DONE");
+
+                        files1Uploader.clear();
+                    },
+                    error: function (data) {
+                        alert("ERROR - " + data.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

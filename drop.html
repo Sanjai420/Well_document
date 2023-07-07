@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+    </style>
+    
+    <div class="container">
+        <!-- The file upload form used as target for the file upload widget -->
+        <div class="row files" id="files1">
+          <h2>Files 1</h2>
+          <span class="btn btn-default btn-file">
+            Browse <input type="file" name="files1" multiple />
+          </span>
+          <br />
+          <ul class="fileList"></ul>
+        </div>
+    </div>
+
+    
+    
+</body>
+</html>
