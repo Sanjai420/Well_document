@@ -23,18 +23,18 @@
                 <h5 class="text-lg font-semibold dark:text-white-light">Form</h5>
             </div>
             <div class="mb-5">
-                <form class="space-y-5">
+                <form class="space-y-3">
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div class="w-full">
-                            <label for="actionName">Given Name:</label>
+                            <label for="actionName">Given Name <span class="text-red-600">*</span></label>
                             <input id="actionName" type="text" placeholder="Enter Name" class="form-input" />
                         </div>
                         <div class="w-full">
-                            <label for="actionName">Middle Name :</label>
+                            <label for="actionName">Middle Name</label>
                             <input id="middleName" type="text" placeholder="Enter Middle Name" class="form-input" />
                         </div>
                         <div class="w-full">
-                            <label for="actionName">Surname:</label>
+                            <label for="actionName">Surname</label>
                             <input id="sureName" type="text" placeholder="Enter Surname" class="form-input" />
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                             }
                           }" x-init="init">
                         <label for="date">Date Of Birth
-                            :</label>
+                            </label>
                         <input id="date_of_birth"
                             x-model="date1"
                             class="form-input" />
@@ -61,8 +61,8 @@
 
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
-                            <label for="country">Country:</label>
-                            <select id="seachable-select" class="w-full mb-6 rounded-lg bg-white border border-slate-200 focus:ring-blue-500 outline-none">
+                            <label for="country">Country</label>
+                            <select id="seachable-select" class="w-full rounded-lg bg-white border border-slate-200 focus:ring-blue-500 outline-none">
                                 <option value="US">United States</option>
                                 <option value="UK">United Kingdom</option>
                                 <option value="CA">Canada</option>
@@ -72,14 +72,14 @@
                                 <option value="IR">Iran</option>
                                 <option value="NZ">New Zealand</option>
                             </select>
-                          </div>
-                          <div class="">
+                        </div>
+                          <div>
                             <label for="gridCity">City</label>
                             <input id="gridCity" type="text" placeholder="Enter City" class="form-input" />
                         </div>
                     </div>
                     <div>
-                        <label for="ipMask" class="">Passport Number:</label>
+                        <label for="ipMask" class="">Passport Number</label>
                         <input id="ipMask" type="text" placeholder="____-____-____" class="form-input" x-mask="9999-9999-9999" />
                     </div>
                     <div>
@@ -88,22 +88,22 @@
                     </div>
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
-                            <label for="phoneMask">Phone Number:</label>
+                            <label for="phoneMask">Phone Number</label>
                             <input id="phoneMask" type="text" placeholder="(___) ___-____" class="form-input" x-mask="(999) 999-9999" />
                         </div>
                         <div>
-                            <label for="gridEmail">Email</label>
+                            <label for="gridEmail">Email <span class="text-red-600">*</span> </label>
                             <input id="gridEmail" type="email" placeholder="Enter Email" class="form-input" />
                         </div>
                         
                     </div>
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div class="w-full">
-                            <label for="motherName">Mother Given Name:</label>
+                            <label for="motherName">Mother Given Name</label>
                             <input id="motherName" type="text" placeholder="Enter Your Name" class="form-input" />
                         </div>
                         <div class="w-full">
-                            <label for="motherSurName">Mother Surname :</label>
+                            <label for="motherSurName">Mother Surname</label>
                             <input id="motherSurName" type="text" placeholder="Enter Your Mother Surname" class="form-input" />
                         </div>
                     </div>
@@ -113,11 +113,11 @@
                     </div>
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3">
                         <div class="w-full">
-                            <label for="executorName">Executor Name:</label>
+                            <label for="executorName">Executor Name</label>
                             <input id="executorName" type="text" placeholder="Enter Your Name" class="form-input" />
                         </div>
                         <div>
-                            <label for="executorphoneMask">Executor Phone Number:</label>
+                            <label for="executorphoneMask">Executor Phone Number</label>
                             <input id="executorphoneMask" type="text" placeholder="(___) ___-____" class="form-input" x-mask="(999) 999-9999" />
                         </div>
                         <div>
@@ -139,83 +139,87 @@
                         <label for="lifeInsurence">Next of Kin</label>
                         <input type="text" placeholder="" class="form-input" id="nextOfKin" required />
                     </div>
-                    <div x-data="dataFileDnD()" class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
-                        <div x-ref="dnd"
-                            class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer"
-                            @dragover.prevent="$event.preventDefault(); $refs.dnd.classList.add('border-blue-400')"
-                            @dragleave="$refs.dnd.classList.remove('border-blue-400')"
-                            @drop.prevent="addFiles($event); $refs.dnd.classList.remove('border-blue-400')">
-                            <input accept="*" type="file" multiple
-                                class="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
-                                @change="addFiles($event)" />
-            
-                            <div class="flex flex-col items-center justify-center py-10 text-center">
-                                <svg class="w-6 h-6 mr-1 text-current-50" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                <p class="m-0">Drag your files here or click in this area.</p>
+                    <div>
+                        <label for="file_upload">Will</label>
+                        <div x-data="dataFileDnD()" class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
+                            <div x-ref="dnd"
+                                class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer"
+                                @dragover.prevent="$event.preventDefault(); $refs.dnd.classList.add('border-blue-400')"
+                                @dragleave="$refs.dnd.classList.remove('border-blue-400')"
+                                @drop.prevent="addFiles($event); $refs.dnd.classList.remove('border-blue-400')">
+                                <input accept="*" type="file" multiple
+                                    class="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
+                                    @change="addFiles($event)" />
+                
+                                <div class="flex flex-col items-center justify-center py-10 text-center">
+                                    <svg class="w-6 h-6 mr-1 text-current-50" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <p class="m-0">Drag your files here or click in this area.</p>
+                                </div>
                             </div>
+                
+                            <template x-if="files.length > 0">
+                                <div class="grid grid-cols-2 gap-4 mt-4 md:grid-cols-6">
+                                    <template x-for="(file, index) in files" :key="index">
+                                        <div class="relative flex flex-col items-center overflow-hidden text-center bg-gray-100 border rounded cursor-move select-none"
+                                            style="padding-top: 100%;" draggable="true" @dragstart="dragstart($event, index)"
+                                            @dragend="fileDragging = null" :class="{'border-blue-600': fileDragging === index}">
+                                            <button class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
+                                                type="button" @click="remove(index)">
+                                                <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                            <template x-if="files[index].type.includes('audio/')">
+                                                <svg class="absolute w-12 h-12 text-gray-400 transform top-1/2 -translate-y-2/3"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                                                </svg>
+                                            </template>
+                                            <template x-if="files[index].type.includes('application/') || files[index].type === ''">
+                                                <svg class="absolute w-12 h-12 text-gray-400 transform top-1/2 -translate-y-2/3"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                                </svg>
+                                            </template>
+                                            <template x-if="files[index].type.includes('image/')">
+                                                <img class="absolute inset-0 z-0 object-cover w-full h-full border-4 border-white preview"
+                                                    x-bind:src="loadFile(files[index])" />
+                                            </template>
+                                            <template x-if="files[index].type.includes('video/')">
+                                                <video
+                                                    class="absolute inset-0 object-cover w-full h-full border-4 border-white pointer-events-none preview">
+                                                    <source x-bind:src="loadFile(files[index])" type="video/mp4" />
+                                                </video>
+                                            </template>
+                
+                                            <div
+                                                class="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-white bg-opacity-50">
+                                                <span class="w-full font-bold text-gray-900 truncate"
+                                                    x-text="files[index].name">Loading</span>
+                                                <span class="text-xs text-gray-900" x-text="humanFileSize(files[index].size)">...</span>
+                                            </div>
+                
+                                            <div class="absolute inset-0 z-40 transition-colorsduration-300"
+                                                @dragenter="dragenter($event)" @dragleave="fileDropping = null"
+                                                :class="{'bg-blue-200 bg-opacity-80': fileDropping == index && fileDragging != index}">
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
                         </div>
-            
-                        <template x-if="files.length > 0">
-                            <div class="grid grid-cols-2 gap-4 mt-4 md:grid-cols-6">
-                                <template x-for="(file, index) in files" :key="index">
-                                    <div class="relative flex flex-col items-center overflow-hidden text-center bg-gray-100 border rounded cursor-move select-none"
-                                        style="padding-top: 100%;" draggable="true" @dragstart="dragstart($event, index)"
-                                        @dragend="fileDragging = null" :class="{'border-blue-600': fileDragging === index}">
-                                        <button class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
-                                            type="button" @click="remove(index)">
-                                            <svg class="w-4 h-4 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
-                                        </button>
-                                        <template x-if="files[index].type.includes('audio/')">
-                                            <svg class="absolute w-12 h-12 text-gray-400 transform top-1/2 -translate-y-2/3"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                                            </svg>
-                                        </template>
-                                        <template x-if="files[index].type.includes('application/') || files[index].type === ''">
-                                            <svg class="absolute w-12 h-12 text-gray-400 transform top-1/2 -translate-y-2/3"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                            </svg>
-                                        </template>
-                                        <template x-if="files[index].type.includes('image/')">
-                                            <img class="absolute inset-0 z-0 object-cover w-full h-full border-4 border-white preview"
-                                                x-bind:src="loadFile(files[index])" />
-                                        </template>
-                                        <template x-if="files[index].type.includes('video/')">
-                                            <video
-                                                class="absolute inset-0 object-cover w-full h-full border-4 border-white pointer-events-none preview">
-                                                <source x-bind:src="loadFile(files[index])" type="video/mp4" />
-                                            </video>
-                                        </template>
-            
-                                        <div
-                                            class="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-white bg-opacity-50">
-                                            <span class="w-full font-bold text-gray-900 truncate"
-                                                x-text="files[index].name">Loading</span>
-                                            <span class="text-xs text-gray-900" x-text="humanFileSize(files[index].size)">...</span>
-                                        </div>
-            
-                                        <div class="absolute inset-0 z-40 transition-colorsduration-300"
-                                            @dragenter="dragenter($event)" @dragleave="fileDropping = null"
-                                            :class="{'bg-blue-200 bg-opacity-80': fileDropping == index && fileDragging != index}">
-                                        </div>
-                                    </div>
-                                </template>
-                            </div>
-                        </template>
                     </div>
+                    
                     
                     <div class="float-right">
                         <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
